@@ -5,11 +5,13 @@ let instructions = document.querySelector(".info_box");
 let quiz = document.querySelector(".quiz_box");
 let timeLeft = document.querySelector(".timer_sec");
 let nextBtn = document.querySelector(".next_btn");
-let question = document.querySelector(".que_text");
+let questionText = document.querySelector(".que_text");
+let options = document.querySelector(".options_list");
 let questionIndex = document.querySelector(".total_que");
 
 let maxTime = 15;
 let interval;
+let queNum = questionIndex.innerText;
 
 function showInstructions() {
     instructions.classList.add("activeInfo");
@@ -30,18 +32,9 @@ function exitQuiz() {
 }
 
 function displayQuestion() {
-    console.log("questions");
-    questionCount();
-}
-
-function nextQuestion() {
-    displayQuestion();
+    questionText.innerText = questions[queNum].question;
+    questionIndex.innerText = ++queNum;
     startTimer();
-}
-
-function questionCount() {
-    console.log(questionIndex.innerText);
-    questionIndex.innerText++;
 }
 
 function startTimer() {
@@ -57,4 +50,4 @@ function startTimer() {
 }
 
 startBtn.addEventListener("click", showInstructions);
-nextBtn.addEventListener("click", nextQuestion);
+nextBtn.addEventListener("click", displayQuestion);

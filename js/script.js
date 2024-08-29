@@ -4,6 +4,9 @@ let continueBtn = document.querySelector(".restart");
 let instructions = document.querySelector(".info_box");
 let quiz = document.querySelector(".quiz_box");
 let timeLeft = document.querySelector(".timer_sec");
+let nextBtn = document.querySelector(".next_btn");
+
+let maxTime = 15;
 
 function showInstructions() {
     instructions.classList.add("activeInfo");
@@ -25,14 +28,20 @@ function cycleQuestions() {
     console.log("questions");
 }
 
+function nextQuestion() {
+    timeLeft.innerText = maxTime;
+    startTimer();
+}
+
 function startTimer() {
     let interval = setInterval(() => {
         timeLeft.innerText--;
         if (timeLeft.innerText == 0) {
-            console.log("done");
             clearInterval(interval);
+            nextBtn.classList.add("show");
         }
-    }, 1000);
+    }, 250);
 }
 
 startBtn.addEventListener("click", showInstructions);
+nextBtn.addEventListener("click", nextQuestion);

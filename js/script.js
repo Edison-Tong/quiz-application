@@ -6,6 +6,7 @@ let quiz = document.querySelector(".quiz_box");
 let timeLeft = document.querySelector(".timer_sec");
 let nextBtn = document.querySelector(".next_btn");
 let question = document.querySelector(".que_text");
+let questionIndex = document.querySelector(".total_que");
 
 let maxTime = 15;
 let interval;
@@ -30,11 +31,17 @@ function exitQuiz() {
 
 function displayQuestion() {
     console.log("questions");
+    questionCount();
 }
 
 function nextQuestion() {
     displayQuestion();
     startTimer();
+}
+
+function questionCount() {
+    console.log(questionIndex.innerText);
+    questionIndex.innerText++;
 }
 
 function startTimer() {
@@ -44,7 +51,6 @@ function startTimer() {
     function timer() {
         timeLeft.innerText--;
         if (timeLeft.innerText == 0) {
-            console.log(0);
             clearInterval(interval);
         }
     }
